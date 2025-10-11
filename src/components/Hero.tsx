@@ -26,25 +26,19 @@ const Hero = () => {
       </nav>
 
       {/* Hero Content */}
-      <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-light mb-6 tracking-wide">
+      <div className="relative z-10 text-center text-white px-6 max-w-5xl mx-auto">
+        <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-light mb-8 tracking-wide lowercase">
           philly tax appeals
         </h1>
-        <p className="text-2xl md:text-3xl font-display font-light mb-4">
+        <p className="text-2xl md:text-3xl font-display font-normal mb-6 tracking-wide">
           Reduce Your Property Taxes
         </p>
-        <p className="text-lg md:text-xl font-body tracking-wider uppercase mb-8 text-white/90">
+        <p className="text-sm md:text-base font-body tracking-widest uppercase mb-8 text-white/90 font-light">
           Founded in Philadelphia
         </p>
-        <p className="text-lg md:text-xl font-display italic mb-12 text-white/90">
+        <p className="text-lg md:text-xl font-display italic mb-16 text-white/95 font-light">
           Expert Consultation • Professional Appeals • Proven Results
         </p>
-        <Button 
-          size="lg"
-          className="bg-accent hover:bg-accent/90 text-accent-foreground font-body text-base px-8 py-6"
-        >
-          Schedule Free Consultation
-        </Button>
       </div>
     </section>
   );
