@@ -1,5 +1,4 @@
 import heroImage from "@/assets/hero-philly.jpg";
-import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
@@ -13,30 +12,27 @@ const Hero = () => {
       </div>
 
       {/* Navigation */}
-      <nav className="absolute top-0 left-0 right-0 z-20 px-8 py-6">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="text-white font-display text-xl tracking-wide">
-            Philly Tax Appeals
-          </div>
-          <div className="flex gap-8 text-white font-body">
-            <a href="#services" className="hover:text-accent transition-colors">Services</a>
-            <a href="#contact" className="hover:text-accent transition-colors">Contact</a>
+      <nav className="absolute top-0 left-0 right-0 z-20 px-8 py-8">
+        <div className="max-w-7xl mx-auto flex justify-end items-center">
+          <div className="flex gap-8 text-white font-body text-sm">
+            <a href="#services" className="hover:opacity-70 transition-opacity">Services</a>
+            <a href="#contact" className="hover:opacity-70 transition-opacity">Contact</a>
           </div>
         </div>
       </nav>
 
       {/* Hero Content */}
       <div className="relative z-10 text-center text-white px-6 max-w-5xl mx-auto">
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-light mb-8 tracking-wide lowercase">
+        <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-light mb-10 tracking-wide lowercase">
           philly tax appeals
         </h1>
-        <p className="text-2xl md:text-3xl font-display font-normal mb-6 tracking-wide">
+        <p className="text-2xl md:text-3xl font-display font-normal mb-8">
           Reduce Your Property Taxes
         </p>
-        <p className="text-sm md:text-base font-body tracking-widest uppercase mb-8 text-white/90 font-light">
-          Founded in Philadelphia
+        <p className="text-xs md:text-sm font-body tracking-widest uppercase mb-8 text-white/90">
+          FOUNDED IN PHILADELPHIA
         </p>
-        <p className="text-lg md:text-xl font-display italic mb-16 text-white/95 font-light">
+        <p className="text-lg md:text-xl font-display italic text-white/95 font-light">
           Expert Consultation • Professional Appeals • Proven Results
         </p>
       </div>
