@@ -8,7 +8,7 @@ const Navigation = ({ variant = "light" }: NavigationProps) => {
   const textColor = variant === "light" ? "text-white" : "text-foreground";
   
   return (
-    <nav className="w-full py-8 px-8">
+    <nav className="w-full py-8">
       <div className="flex justify-center gap-10 font-body text-sm font-semibold">
         <Link 
           to="/" 
