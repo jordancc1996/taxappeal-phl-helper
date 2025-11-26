@@ -3,6 +3,7 @@ import { useToast } from "@/hooks/use-toast";
 
 const AppealRequestForm = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -13,7 +14,7 @@ const AppealRequestForm = () => {
     additionalNotes: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
@@ -26,21 +27,47 @@ const AppealRequestForm = () => {
       return;
     }
 
-    toast({
-      title: "Request Submitted",
-      description: "We'll contact you shortly to discuss your tax appeal.",
-    });
+    setIsSubmitting(true);
 
-    // Reset form
-    setFormData({
-      fullName: "",
-      email: "",
-      phone: "",
-      propertyAddress: "",
-      propertyType: "",
-      appealReason: "",
-      additionalNotes: ""
-    });
+    try {
+      const response = await fetch("https://formcarry.com/s/5KTu8FjHmBp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Request Submitted",
+          description: "We'll contact you shortly to discuss your tax appeal.",
+        });
+
+        // Reset form
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          propertyAddress: "",
+          propertyType: "",
+          appealReason: "",
+          additionalNotes: ""
+        });
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast({
+        title: "Submission Failed",
+        description: "There was an error submitting your request. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -173,9 +200,10 @@ const AppealRequestForm = () => {
 
           <button
             type="submit"
-            className="w-full bg-foreground text-background py-5 px-8 text-lg font-display hover:opacity-90 transition-opacity"
+            disabled={isSubmitting}
+            className="w-full bg-foreground text-background py-5 px-8 text-lg font-display hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Submit Appeal Request
+            {isSubmitting ? "Submitting..." : "Submit Appeal Request"}
           </button>
         </form>
       </div>
