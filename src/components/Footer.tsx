@@ -38,7 +38,7 @@ const Footer = () => {
         <div className="pt-10 border-t border-foreground/10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-base font-body text-foreground/50">
-              © 2024 Philly Tax Appeals. All rights reserved.
+              © 2025 Philly Tax Appeals. All rights reserved.
             </p>
             <a href="/privacy-policy" className="text-base font-body text-foreground/50 hover:text-foreground transition-colors">
               Privacy Policy
