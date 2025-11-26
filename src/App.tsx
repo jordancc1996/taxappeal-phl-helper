@@ -21,10 +21,10 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/bucks-county" element={<BucksCounty />} />
-          <Route path="/delaware-county" element={<DelawareCounty />} />
-          <Route path="/montgomery-county" element={<MontgomeryCounty />} />
-          <Route path="/philadelphia" element={<Philadelphia />} />
+          <Route path="/bucks-county-property-tax-appeal" element={<BucksCounty />} />
+          <Route path="/delaware-county-property-tax-appeal" element={<DelawareCounty />} />
+          <Route path="/montgomery-county-property-tax-appeal" element={<MontgomeryCounty />} />
+          <Route path="/philadelphia-property-tax-appeal" element={<Philadelphia />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

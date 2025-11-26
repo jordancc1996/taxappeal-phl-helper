@@ -19,10 +19,10 @@ const Hero = () => {
       {/* Navigation */}
       <nav className="absolute top-8 left-0 right-0 z-20">
         <div className="flex justify-center gap-10 text-white font-body text-lg font-semibold">
-          <a href="/bucks-county" className="py-3 px-6 hover:text-white/80 transition-all duration-300 hover:-translate-y-0.5">Bucks County</a>
-          <a href="/delaware-county" className="py-3 px-6 hover:text-white/80 transition-all duration-300 hover:-translate-y-0.5">Delaware County</a>
-          <a href="/montgomery-county" className="py-3 px-6 hover:text-white/80 transition-all duration-300 hover:-translate-y-0.5">Montgomery County</a>
-          <a href="/philadelphia" className="py-3 px-6 hover:text-white/80 transition-all duration-300 hover:-translate-y-0.5">Philadelphia</a>
+          <a href="/bucks-county-property-tax-appeal" className="py-3 px-6 hover:text-white/80 transition-all duration-300 hover:-translate-y-0.5">Bucks County</a>
+          <a href="/delaware-county-property-tax-appeal" className="py-3 px-6 hover:text-white/80 transition-all duration-300 hover:-translate-y-0.5">Delaware County</a>
+          <a href="/montgomery-county-property-tax-appeal" className="py-3 px-6 hover:text-white/80 transition-all duration-300 hover:-translate-y-0.5">Montgomery County</a>
+          <a href="/philadelphia-property-tax-appeal" className="py-3 px-6 hover:text-white/80 transition-all duration-300 hover:-translate-y-0.5">Philadelphia</a>
           <a href="#contact" className="py-3 px-6 hover:text-white/80 transition-all duration-300 hover:-translate-y-0.5">Contact</a>
         </div>
       </nav>
