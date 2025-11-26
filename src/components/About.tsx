@@ -1,4 +1,4 @@
-import consultationImage from "@/assets/consultation.jpg";
+import consultationImage from "@/assets/legal-consultation.jpg";
 
 const About = () => {
   return (
