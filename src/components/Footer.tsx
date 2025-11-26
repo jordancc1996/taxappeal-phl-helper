@@ -12,14 +12,15 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="space-y-5">
-            <h4 className="text-2xl font-display text-foreground">
+          <div>
+            <h4 className="text-xl font-display text-foreground">
               Counties
             </h4>
-            <ul className="space-y-3 text-lg font-body text-foreground">
-              <li><a href="/delaware-county" className="hover:opacity-60 transition-opacity">Delaware County</a></li>
-              <li><a href="/montgomery-county" className="hover:opacity-60 transition-opacity">Montgomery County</a></li>
-              <li><a href="/philadelphia" className="hover:opacity-60 transition-opacity">Philadelphia</a></li>
+            <ul className="space-y-2 text-base font-body text-foreground/70">
+              <li><a href="/bucks-county" className="hover:text-foreground transition-colors">Bucks County</a></li>
+              <li><a href="/delaware-county" className="hover:text-foreground transition-colors">Delaware County</a></li>
+              <li><a href="/montgomery-county" className="hover:text-foreground transition-colors">Montgomery County</a></li>
+              <li><a href="/philadelphia" className="hover:text-foreground transition-colors">Philadelphia</a></li>
             </ul>
           </div>
 

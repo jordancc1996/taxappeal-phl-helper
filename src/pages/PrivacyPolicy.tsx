@@ -11,6 +11,7 @@ const PrivacyPolicy = () => {
             philly tax appeals
           </Link>
           <div className="flex gap-8 text-foreground font-body text-sm">
+            <Link to="/bucks-county" className="hover:opacity-70 transition-opacity">Bucks County</Link>
             <Link to="/delaware-county" className="hover:opacity-70 transition-opacity">Delaware County</Link>
             <Link to="/montgomery-county" className="hover:opacity-70 transition-opacity">Montgomery County</Link>
             <Link to="/philadelphia" className="hover:opacity-70 transition-opacity">Philadelphia</Link>
