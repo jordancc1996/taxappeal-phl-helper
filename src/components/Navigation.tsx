@@ -11,6 +11,12 @@ const Navigation = ({ variant = "light" }: NavigationProps) => {
     <nav className="w-full py-8 px-8">
       <div className="flex justify-center gap-10 font-body text-sm font-semibold">
         <Link 
+          to="/" 
+          className={`${textColor} hover:opacity-70 transition-all duration-300`}
+        >
+          Home
+        </Link>
+        <Link 
           to="/bucks-county-property-tax-appeal" 
           className={`${textColor} hover:opacity-70 transition-all duration-300`}
         >
