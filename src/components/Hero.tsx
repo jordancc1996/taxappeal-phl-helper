@@ -19,6 +19,7 @@ const Hero = () => {
       {/* Navigation */}
       <nav className="absolute top-6 right-12 z-20">
         <div className="flex gap-10 text-white font-body text-sm">
+          <a href="/bucks-county" className="hover:opacity-60 transition-opacity">Bucks County</a>
           <a href="/delaware-county" className="hover:opacity-60 transition-opacity">Delaware County</a>
           <a href="/montgomery-county" className="hover:opacity-60 transition-opacity">Montgomery County</a>
           <a href="/philadelphia" className="hover:opacity-60 transition-opacity">Philadelphia</a>

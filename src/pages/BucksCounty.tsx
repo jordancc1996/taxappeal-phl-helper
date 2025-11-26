@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import AppealRequestForm from "@/components/AppealRequestForm";
 import Footer from "@/components/Footer";
 
-const DelawareCounty = () => {
+const BucksCounty = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -24,7 +24,7 @@ const DelawareCounty = () => {
       {/* Content */}
       <div className="max-w-7xl mx-auto px-8 py-24 md:py-32">
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-light mb-12 text-foreground lowercase">
-          Delaware County Tax Appeals
+          Bucks County Tax Appeals
         </h1>
         
         <div className="grid md:grid-cols-2 gap-x-24 gap-y-16">
@@ -33,7 +33,7 @@ const DelawareCounty = () => {
               Expert Tax Appeal Services
             </h2>
             <p className="text-foreground font-body text-base md:text-lg leading-relaxed">
-              Our team specializes in Delaware County property tax appeals, with deep knowledge of local assessment practices and proven success in reducing tax burdens for property owners throughout the county.
+              Our team specializes in Bucks County property tax appeals, with deep knowledge of local assessment practices and proven success in reducing tax burdens for property owners throughout the county.
             </p>
           </div>
 
@@ -42,7 +42,7 @@ const DelawareCounty = () => {
               Local Expertise
             </h2>
             <p className="text-foreground font-body text-base md:text-lg leading-relaxed">
-              We understand the unique challenges of Delaware County assessments and have established relationships with local assessment offices to ensure your appeal receives proper consideration.
+              We understand the unique challenges of Bucks County assessments and have established relationships with local assessment offices to ensure your appeal receives proper consideration.
             </p>
           </div>
 
@@ -60,7 +60,7 @@ const DelawareCounty = () => {
               Proven Track Record
             </h2>
             <p className="text-foreground font-body text-base md:text-lg leading-relaxed">
-              Our Delaware County clients have achieved significant tax reductions through our comprehensive appeal process and expert representation at hearings.
+              Our Bucks County clients have achieved significant tax reductions through our comprehensive appeal process and expert representation at hearings.
             </p>
           </div>
         </div>
@@ -72,4 +72,4 @@ const DelawareCounty = () => {
   );
 };
 
-export default DelawareCounty;
+export default BucksCounty;
