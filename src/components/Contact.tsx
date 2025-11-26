@@ -16,8 +16,8 @@ const Contact = () => {
             <h3 className="text-2xl md:text-3xl font-display text-foreground">
               Email
             </h3>
-            <a href="mailto:info@phillytaxappeals.com" className="text-xl md:text-2xl font-body text-foreground hover:opacity-60 transition-opacity block">
-              info@phillytaxappeals.com
+            <a href="mailto:jordancchaplin@gmail.com" className="text-xl md:text-2xl font-body text-foreground hover:opacity-60 transition-opacity block">
+              jordancchaplin@gmail.com
             </a>
           </div>
 
@@ -25,8 +25,8 @@ const Contact = () => {
             <h3 className="text-2xl md:text-3xl font-display text-foreground">
               Phone
             </h3>
-            <a href="tel:+12155551234" className="text-xl md:text-2xl font-body text-foreground hover:opacity-60 transition-opacity block">
-              (215) 555-1234
+            <a href="tel:+12676323162" className="text-xl md:text-2xl font-body text-foreground hover:opacity-60 transition-opacity block">
+              (267) 632-3162
             </a>
           </div>
 
