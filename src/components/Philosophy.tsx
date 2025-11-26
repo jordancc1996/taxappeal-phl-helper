@@ -16,15 +16,12 @@ const Philosophy = () => {
             <h2 className="font-display text-foreground leading-[1.05]" style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)' }}>
               Our Philosophy
             </h2>
-            <blockquote className="text-3xl md:text-4xl font-display italic text-foreground leading-relaxed">
-              "Every property deserves a fair and accurate assessment. We believe in transparency, expertise, and results."
-            </blockquote>
             <div className="space-y-7 text-foreground">
               <p className="text-xl md:text-2xl font-body leading-relaxed">
-                At Philly Tax Appeals, we're committed to providing transparent, professional service with a focus on achieving real savings for our clients. Our risk-free model means we only succeed when you do.
+                Philly Tax Appeals is committed to providing transparent and professional re-assessments with a focus on achieving savings for our clients. We combine local expertise with proven strategies to deliver results that matter. We're here to ensure your re-assessment is a story told accurately.
               </p>
               <p className="text-xl md:text-2xl font-body leading-relaxed">
-                We combine local expertise with proven strategies to deliver results that matter. Every assessment tells a story, and we're here to ensure yours is told accurately.
+                The National Taxpayers Union estimates 60% of all United States properties are over assessed while fewer than 5% of homeowners appeal their assessments because they do not know they can. Philly Tax Appeals makes sure that our clients understand assessments and have an opportunity to take advantage of substantial savings.
               </p>
             </div>
           </div>
