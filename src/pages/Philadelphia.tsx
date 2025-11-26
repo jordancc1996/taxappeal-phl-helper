@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import AppealRequestForm from "@/components/AppealRequestForm";
+import Footer from "@/components/Footer";
 
 const Philadelphia = () => {
   return (
@@ -62,6 +64,9 @@ const Philadelphia = () => {
           </div>
         </div>
       </div>
+
+      <AppealRequestForm />
+      <Footer />
     </div>
   );
 };

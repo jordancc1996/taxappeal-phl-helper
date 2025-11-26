@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import AppealRequestForm from "@/components/AppealRequestForm";
+import Footer from "@/components/Footer";
 
 const DelawareCounty = () => {
   return (
@@ -62,6 +64,9 @@ const DelawareCounty = () => {
           </div>
         </div>
       </div>
+
+      <AppealRequestForm />
+      <Footer />
     </div>
   );
 };
