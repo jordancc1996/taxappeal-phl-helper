@@ -1,14 +1,32 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 interface NavigationProps {
   variant?: "light" | "dark";
 }
 
 const Navigation = ({ variant = "light" }: NavigationProps) => {
-  const textColor = variant === "light" ? "text-white" : "text-foreground";
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const textColor = variant === "light" 
+    ? isScrolled ? "text-foreground" : "text-white"
+    : "text-foreground";
+  
+  const bgColor = isScrolled 
+    ? "bg-background/95 backdrop-blur-md shadow-sm" 
+    : "bg-transparent";
   
   return (
-    <nav className="w-full py-8">
+    <nav className={`fixed top-0 left-0 right-0 w-full py-8 z-50 transition-all duration-300 ${bgColor}`}>
       <div className="flex justify-center gap-10 font-body text-sm font-semibold">
         <Link 
           to="/" 
