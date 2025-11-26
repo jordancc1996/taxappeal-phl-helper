@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import DelawareCounty from "./pages/DelawareCounty";
 import MontgomeryCounty from "./pages/MontgomeryCounty";
 import Philadelphia from "./pages/Philadelphia";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/delaware-county" element={<DelawareCounty />} />
           <Route path="/montgomery-county" element={<MontgomeryCounty />} />
           <Route path="/philadelphia" element={<Philadelphia />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
