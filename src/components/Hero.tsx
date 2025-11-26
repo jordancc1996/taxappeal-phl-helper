@@ -15,7 +15,9 @@ const Hero = () => {
       <nav className="absolute top-0 left-0 right-0 z-20 px-8 py-8">
         <div className="max-w-7xl mx-auto flex justify-end items-center">
           <div className="flex gap-8 text-white font-body text-sm">
-            <a href="#services" className="hover:opacity-70 transition-opacity">Services</a>
+            <a href="/delaware-county" className="hover:opacity-70 transition-opacity">Delaware County</a>
+            <a href="/montgomery-county" className="hover:opacity-70 transition-opacity">Montgomery County</a>
+            <a href="/philadelphia" className="hover:opacity-70 transition-opacity">Philadelphia</a>
             <a href="#contact" className="hover:opacity-70 transition-opacity">Contact</a>
           </div>
         </div>
