@@ -5,6 +5,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import DelawareCounty from "./pages/DelawareCounty";
+import MontgomeryCounty from "./pages/MontgomeryCounty";
+import Philadelphia from "./pages/Philadelphia";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +19,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/delaware-county" element={<DelawareCounty />} />
+          <Route path="/montgomery-county" element={<MontgomeryCounty />} />
+          <Route path="/philadelphia" element={<Philadelphia />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
