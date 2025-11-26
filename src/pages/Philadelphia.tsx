@@ -27,6 +27,13 @@ const Philadelphia = () => {
           Philadelphia Tax Appeals
         </h1>
         
+        {/* Image Placeholder */}
+        <div className="mb-16">
+          <div className="w-full h-[400px] bg-muted/30 rounded-sm flex items-center justify-center">
+            <span className="text-muted-foreground font-body">Image Placeholder - Philadelphia</span>
+          </div>
+        </div>
+        
         <div className="grid md:grid-cols-2 gap-x-24 gap-y-16">
           <div>
             <h2 className="text-2xl md:text-3xl font-display font-normal text-foreground mb-6">
