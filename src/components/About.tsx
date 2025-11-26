@@ -14,7 +14,7 @@ const About = () => {
                 Philly Tax Appeals is a source of property tax relief and fairness. Whether residential or commercial, we advocate for our clients, striving to ensure accurate assessments and substantial savings.
               </p>
               <p className="text-xl md:text-2xl font-body leading-relaxed">
-                Whether your goals are reducing your tax burden or understanding assessment complexities, and whether you're in Philadelphia, Delaware County, or Montgomery County, we support our clients and the communities they call home.
+                Whether your goals are reducing your tax burden or understanding assessment complexities, and whether you're in Bucks County, Delaware County, Montgomery County, or Philadelphia, we support our clients and the communities they call home.
               </p>
               <ul className="space-y-4 text-xl md:text-2xl font-body list-none">
                 <li>• Property assessment review and analysis</li>
