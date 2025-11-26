@@ -8,33 +8,31 @@ const Hero = () => {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60" />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       {/* Navigation */}
-      <nav className="absolute top-0 left-0 right-0 z-20 px-8 py-8">
-        <div className="max-w-7xl mx-auto flex justify-end items-center">
-          <div className="flex gap-8 text-white font-body text-sm">
-            <a href="/delaware-county" className="hover:opacity-70 transition-opacity">Delaware County</a>
-            <a href="/montgomery-county" className="hover:opacity-70 transition-opacity">Montgomery County</a>
-            <a href="/philadelphia" className="hover:opacity-70 transition-opacity">Philadelphia</a>
-            <a href="#contact" className="hover:opacity-70 transition-opacity">Contact</a>
-          </div>
+      <nav className="absolute top-8 right-8 z-20">
+        <div className="flex gap-12 text-white font-body text-base">
+          <a href="/delaware-county" className="hover:opacity-60 transition-opacity">Delaware County</a>
+          <a href="/montgomery-county" className="hover:opacity-60 transition-opacity">Montgomery County</a>
+          <a href="/philadelphia" className="hover:opacity-60 transition-opacity">Philadelphia</a>
+          <a href="#contact" className="hover:opacity-60 transition-opacity">Contact</a>
         </div>
       </nav>
 
       {/* Hero Content */}
-      <div className="relative z-10 text-center text-white px-6 max-w-5xl mx-auto">
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-light mb-10 tracking-wide lowercase">
+      <div className="relative z-10 text-center text-white px-6">
+        <h1 className="text-7xl md:text-8xl lg:text-9xl font-display mb-12 lowercase tracking-tight">
           philly tax appeals
         </h1>
-        <p className="text-2xl md:text-3xl font-display font-normal mb-8">
+        <h2 className="text-3xl md:text-4xl font-display mb-8 font-normal">
           Reduce Your Property Taxes
-        </p>
-        <p className="text-xs md:text-sm font-body tracking-widest uppercase mb-8 text-white/90">
+        </h2>
+        <p className="text-sm md:text-base font-body tracking-[0.3em] uppercase mb-10">
           FOUNDED IN PHILADELPHIA
         </p>
-        <p className="text-lg md:text-xl font-display italic text-white/95 font-light">
+        <p className="text-xl md:text-2xl font-display italic font-light">
           Expert Consultation • Professional Appeals • Proven Results
         </p>
       </div>

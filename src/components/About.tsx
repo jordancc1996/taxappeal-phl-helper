@@ -2,31 +2,38 @@ import consultationImage from "@/assets/consultation.jpg";
 
 const About = () => {
   return (
-    <section className="py-24 md:py-32 px-8 md:px-12 bg-background">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 md:gap-24">
-        <div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-normal mb-12 text-foreground leading-tight">
-            A Partner in Tax Savings
-          </h2>
-          <p className="text-base md:text-lg font-body text-foreground mb-6 leading-relaxed">
-            Philly Tax Appeals is your trusted source for real estate tax reduction in Philadelphia. Whether you're a homeowner or property investor, we work tirelessly to ensure your property is assessed fairly.
-          </p>
-          <p className="text-base md:text-lg font-body text-foreground mb-10 leading-relaxed">
-            Our expertise spans residential and commercial properties, and we're deeply integrated into Philadelphia's real estate and legal network. We guide our clients through every step of the appeals process.
-          </p>
-          <ul className="space-y-4 text-foreground font-body text-base md:text-lg leading-relaxed">
-            <li>• Professional assessment review and property valuation analysis</li>
-            <li>• Expert representation at appeal hearings</li>
-            <li>• Comprehensive strategy tailored to your property</li>
-            <li>• No upfront fees - only pay when we save you money</li>
-          </ul>
-        </div>
-        <div>
-          <img 
-            src={consultationImage} 
-            alt="Professional tax consultation meeting"
-            className="w-full h-auto"
-          />
+    <section className="py-32 md:py-40 px-8 md:px-16 bg-background">
+      <div className="max-w-[1400px] mx-auto">
+        <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-start">
+          <div className="space-y-8">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-display text-foreground leading-[1.1]">
+              A Place of Fair Assessment
+            </h2>
+            <div className="space-y-6 text-foreground/90">
+              <p className="text-lg md:text-xl font-body leading-relaxed">
+                Philly Tax Appeals is a source of property tax relief and fairness. Whether residential or commercial, we advocate for our clients, striving to ensure accurate assessments and substantial savings.
+              </p>
+              <p className="text-lg md:text-xl font-body leading-relaxed">
+                Whether your goals are reducing your tax burden or understanding assessment complexities, and whether you're in Philadelphia, Delaware County, or Montgomery County, we support our clients and the communities they call home.
+              </p>
+              <ul className="space-y-3 text-lg md:text-xl font-body">
+                <li>• Property assessment review and analysis</li>
+                <li>• Expert representation at appeal hearings</li>
+                <li>• Comprehensive tax reduction strategies</li>
+                <li>• Risk-free contingency-based service</li>
+              </ul>
+              <p className="text-lg md:text-xl font-body leading-relaxed">
+                Philly Tax Appeals is based in Philadelphia and deeply integrated into the regional property tax network. We work tirelessly with property owners here and throughout the surrounding counties to guide them on their appeal journeys.
+              </p>
+            </div>
+          </div>
+          <div className="md:sticky md:top-32">
+            <img 
+              src={consultationImage} 
+              alt="Tax consultation meeting" 
+              className="w-full h-auto"
+            />
+          </div>
         </div>
       </div>
     </section>
