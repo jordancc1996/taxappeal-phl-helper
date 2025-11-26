@@ -17,10 +17,10 @@ const Footer = () => {
               Counties
             </h4>
             <ul className="space-y-2 text-base font-body text-foreground/70">
-              <li><a href="/bucks-county" className="hover:text-foreground transition-colors">Bucks County</a></li>
-              <li><a href="/delaware-county" className="hover:text-foreground transition-colors">Delaware County</a></li>
-              <li><a href="/montgomery-county" className="hover:text-foreground transition-colors">Montgomery County</a></li>
-              <li><a href="/philadelphia" className="hover:text-foreground transition-colors">Philadelphia</a></li>
+              <li><a href="/bucks-county-property-tax-appeal" className="hover:text-foreground transition-colors">Bucks County</a></li>
+              <li><a href="/delaware-county-property-tax-appeal" className="hover:text-foreground transition-colors">Delaware County</a></li>
+              <li><a href="/montgomery-county-property-tax-appeal" className="hover:text-foreground transition-colors">Montgomery County</a></li>
+              <li><a href="/philadelphia-property-tax-appeal" className="hover:text-foreground transition-colors">Philadelphia</a></li>
             </ul>
           </div>
 
