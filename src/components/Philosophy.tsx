@@ -14,7 +14,7 @@ const Philosophy = () => {
           </div>
           <div className="order-1 md:order-2 space-y-10">
             <h2 className="font-display text-foreground leading-[1.05]" style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)' }}>
-              Our Philosophy
+              Our Mission
             </h2>
             <div className="space-y-7 text-foreground">
               <p className="text-xl md:text-2xl font-body leading-relaxed">
