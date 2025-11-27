@@ -1,4 +1,4 @@
-import documentsImage from "@/assets/philly-city-hall.jpg";
+import documentsImage from "@/assets/philosophy-homes.jpg";
 
 const Philosophy = () => {
   return (
@@ -8,7 +8,7 @@ const Philosophy = () => {
           <div className="order-2 md:order-1 md:sticky md:top-24">
             <img 
               src={documentsImage} 
-              alt="Philadelphia City Hall" 
+              alt="Philadelphia row houses" 
               className="w-full h-auto"
             />
           </div>
