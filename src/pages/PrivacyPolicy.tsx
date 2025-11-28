@@ -136,7 +136,7 @@ const PrivacyPolicy = () => {
               If you have questions about this Privacy Policy or our privacy practices, please contact us:
             </p>
             <div className="text-base md:text-lg font-body leading-relaxed">
-              <p>Email: <a href="mailto:jordancchaplin@gmail.com" className="hover:opacity-60 transition-opacity">jordancchaplin@gmail.com</a></p>
+              <p>Email: <a href="mailto:jordan@phillytaxappeals.com" className="hover:opacity-60 transition-opacity">jordan@phillytaxappeals.com</a></p>
               <p>Phone: <a href="tel:+12676323162" className="hover:opacity-60 transition-opacity">(267) 632-3162</a></p>
               <p>Address: Philadelphia, PA</p>
             </div>

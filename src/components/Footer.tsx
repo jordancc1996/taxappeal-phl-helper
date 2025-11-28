@@ -29,7 +29,7 @@ const Footer = () => {
               Contact
             </h4>
             <ul className="space-y-3 text-lg font-body text-foreground">
-              <li><a href="mailto:jordancchaplin@gmail.com" className="hover:opacity-60 transition-opacity">jordancchaplin@gmail.com</a></li>
+              <li><a href="mailto:jordan@phillytaxappeals.com" className="hover:opacity-60 transition-opacity">jordan@phillytaxappeals.com</a></li>
               <li><a href="tel:+12676323162" className="hover:opacity-60 transition-opacity">(267) 632-3162</a></li>
             </ul>
           </div>
