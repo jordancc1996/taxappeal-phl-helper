@@ -55,6 +55,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/contact" className="hover:text-foreground transition-colors">
+                  Request an Appeal
+                </Link>
+              </li>
+              <li>
                 <a href="mailto:jordan@phillytaxappeals.com" className="hover:text-foreground transition-colors">
                   jordan@phillytaxappeals.com
                 </a>

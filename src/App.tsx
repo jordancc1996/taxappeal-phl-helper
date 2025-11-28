@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import BucksCounty from "./pages/BucksCounty";
+import Contact from "./pages/Contact";
 import DelawareCounty from "./pages/DelawareCounty";
 import MontgomeryCounty from "./pages/MontgomeryCounty";
 import Philadelphia from "./pages/Philadelphia";
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/delaware-county-property-tax-appeal" element={<DelawareCounty />} />
           <Route path="/montgomery-county-property-tax-appeal" element={<MontgomeryCounty />} />
           <Route path="/philadelphia-property-tax-appeal" element={<Philadelphia />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
