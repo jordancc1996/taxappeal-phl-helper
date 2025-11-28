@@ -1,6 +1,7 @@
 import AppealRequestForm from "@/components/AppealRequestForm";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
+import bucksCountyImage from "@/assets/bucks-county.jpg";
 
 const BucksCounty = () => {
   return (
@@ -13,11 +14,13 @@ const BucksCounty = () => {
           Bucks County Tax Appeals
         </h1>
         
-        {/* Image Placeholder */}
+        {/* Hero Image */}
         <div className="mb-16">
-          <div className="w-full h-[400px] bg-muted/30 rounded-sm flex items-center justify-center">
-            <span className="text-muted-foreground font-body">Image Placeholder - Bucks County</span>
-          </div>
+          <img 
+            src={bucksCountyImage} 
+            alt="Historic Bucks County home with green lawn" 
+            className="w-full h-[400px] object-cover"
+          />
         </div>
         
         <div className="grid md:grid-cols-2 gap-x-24 gap-y-16">
