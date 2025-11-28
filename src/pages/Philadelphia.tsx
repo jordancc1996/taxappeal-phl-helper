@@ -3,6 +3,7 @@ import AppealRequestForm from "@/components/AppealRequestForm";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import RelatedCounties from "@/components/RelatedCounties";
+import philadelphiaImage from "@/assets/philadelphia.jpg";
 
 const Philadelphia = () => {
   return (
@@ -26,11 +27,13 @@ const Philadelphia = () => {
           Philadelphia Tax Appeals
         </h1>
         
-        {/* Image Placeholder */}
+        {/* Philadelphia Image */}
         <div className="mb-16">
-          <div className="w-full h-[400px] bg-muted/30 rounded-sm flex items-center justify-center">
-            <span className="text-muted-foreground font-body">Image Placeholder - Philadelphia</span>
-          </div>
+          <img 
+            src={philadelphiaImage} 
+            alt="Historic Philadelphia row homes with stone facades" 
+            className="w-full h-[400px] object-cover rounded-sm"
+          />
         </div>
         
         <div className="grid md:grid-cols-2 gap-x-24 gap-y-16">
