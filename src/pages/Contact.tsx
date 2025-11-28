@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import AppealRequestForm from "@/components/AppealRequestForm";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
+import contactImage from "@/assets/contact-philly.jpg";
 
 const Contact = () => {
   return (
@@ -25,11 +26,13 @@ const Contact = () => {
           contact us
         </h1>
         
-        {/* Image Placeholder */}
+        {/* Contact Image */}
         <div className="mb-16">
-          <div className="w-full h-[400px] bg-muted/30 rounded-sm flex items-center justify-center">
-            <span className="text-muted-foreground font-body">Image Placeholder - Contact</span>
-          </div>
+          <img 
+            src={contactImage} 
+            alt="Philadelphia skyline at golden hour with waterfront reflection" 
+            className="w-full h-[400px] object-cover rounded-sm"
+          />
         </div>
         
         <div className="grid md:grid-cols-2 gap-x-24 gap-y-12 mb-16">
