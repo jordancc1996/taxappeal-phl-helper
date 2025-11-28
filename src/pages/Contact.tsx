@@ -21,9 +21,16 @@ const Contact = () => {
 
       {/* Content */}
       <div className="max-w-7xl mx-auto px-8 py-12 md:py-16">
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-light mb-8 text-foreground lowercase">
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-light mb-12 text-foreground lowercase">
           contact us
         </h1>
+        
+        {/* Image Placeholder */}
+        <div className="mb-16">
+          <div className="w-full h-[400px] bg-muted/30 rounded-sm flex items-center justify-center">
+            <span className="text-muted-foreground font-body">Image Placeholder - Contact</span>
+          </div>
+        </div>
         
         <div className="grid md:grid-cols-2 gap-x-24 gap-y-12 mb-16">
           <div>
