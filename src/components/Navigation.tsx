@@ -58,12 +58,12 @@ const Navigation = ({ variant = "light" }: NavigationProps) => {
         >
           Philadelphia
         </Link>
-        <a 
-          href="/#contact" 
+        <Link 
+          to="/contact" 
           className={`${textColor} hover:opacity-70 transition-all duration-300`}
         >
           Contact
-        </a>
+        </Link>
       </div>
     </nav>
   );
