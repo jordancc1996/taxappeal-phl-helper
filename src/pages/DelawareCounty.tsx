@@ -1,6 +1,7 @@
 import AppealRequestForm from "@/components/AppealRequestForm";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
+import delawareCountyImage from "@/assets/delaware-county.jpg";
 
 const DelawareCounty = () => {
   return (
@@ -13,11 +14,13 @@ const DelawareCounty = () => {
           Delaware County Tax Appeals
         </h1>
         
-        {/* Image Placeholder */}
+        {/* Hero Image */}
         <div className="mb-16">
-          <div className="w-full h-[400px] bg-muted/30 rounded-sm flex items-center justify-center">
-            <span className="text-muted-foreground font-body">Image Placeholder - Delaware County</span>
-          </div>
+          <img 
+            src={delawareCountyImage} 
+            alt="Delaware County property landscape" 
+            className="w-full h-[400px] object-cover"
+          />
         </div>
         
         <div className="grid md:grid-cols-2 gap-x-24 gap-y-16">
