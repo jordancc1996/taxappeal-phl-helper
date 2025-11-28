@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import consultationImage from "@/assets/legal-consultation.jpg";
 
 const About = () => {
@@ -14,7 +15,23 @@ const About = () => {
                 Philly Tax Appeals is a source of property tax relief and fairness. We provide tax appeal solutions for our clients whether it be for residential or commercial real estate. Our assessments are accurate and have resulted in substantial savings for our clients.
               </p>
               <p className="text-xl md:text-2xl font-body leading-relaxed">
-                Whether you're in Bucks County, Delaware County, Montgomery County or Philadelphia we support our clients and the communities they call home. Philly Tax Appeals is based in Philadelphia and deeply integrated into the real estate sector. We work tirelessly with property owners in Philadelphia and throughout the surrounding counties to provide the best and most accurate assessments of their real estate.
+                Whether you're in{" "}
+                <Link to="/bucks-county-property-tax-appeal" className="underline underline-offset-4 hover:opacity-70 transition-opacity">
+                  Bucks County
+                </Link>
+                ,{" "}
+                <Link to="/delaware-county-property-tax-appeal" className="underline underline-offset-4 hover:opacity-70 transition-opacity">
+                  Delaware County
+                </Link>
+                ,{" "}
+                <Link to="/montgomery-county-property-tax-appeal" className="underline underline-offset-4 hover:opacity-70 transition-opacity">
+                  Montgomery County
+                </Link>
+                {" "}or{" "}
+                <Link to="/philadelphia-property-tax-appeal" className="underline underline-offset-4 hover:opacity-70 transition-opacity">
+                  Philadelphia
+                </Link>
+                {" "}we support our clients and the communities they call home. Philly Tax Appeals is based in Philadelphia and deeply integrated into the real estate sector. We work tirelessly with property owners in Philadelphia and throughout the surrounding counties to provide the best and most accurate assessments of their real estate.
               </p>
             </div>
           </div>
