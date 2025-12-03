@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import Articles from "./pages/Articles";
 import BucksCounty from "./pages/BucksCounty";
 import Contact from "./pages/Contact";
 import DelawareCounty from "./pages/DelawareCounty";
@@ -22,6 +23,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/articles" element={<Articles />} />
           <Route path="/bucks-county-property-tax-appeal" element={<BucksCounty />} />
           <Route path="/delaware-county-property-tax-appeal" element={<DelawareCounty />} />
           <Route path="/montgomery-county-property-tax-appeal" element={<MontgomeryCounty />} />
