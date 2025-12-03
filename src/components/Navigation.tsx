@@ -59,10 +59,10 @@ const Navigation = ({ variant = "light" }: NavigationProps) => {
           Philadelphia
         </Link>
         <Link 
-          to="/articles" 
+          to="/news" 
           className={`${textColor} hover:opacity-70 transition-all duration-300`}
         >
-          Articles
+          News
         </Link>
         <Link 
           to="/contact" 

@@ -14,7 +14,7 @@ const Articles = () => {
             INSIGHTS & RESOURCES
           </p>
           <h1 className="text-6xl md:text-7xl font-display lowercase mb-8">
-            articles
+            news
           </h1>
           <p className="text-lg font-body text-muted-foreground max-w-2xl mx-auto">
             Expert insights on property tax appeals, assessment processes, and strategies to reduce your tax burden in the Philadelphia area.
