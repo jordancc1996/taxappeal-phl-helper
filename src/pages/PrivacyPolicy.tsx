@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
 import Footer from "@/components/Footer";
+import PageSEO from "@/components/PageSEO";
+import { privacyPolicySchema } from "@/lib/schemas";
 
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-white">
+      <PageSEO
+        title="Privacy Policy | Philly Tax Appeals"
+        description="Privacy policy for Philly Tax Appeals. Learn how we collect, use, and protect your personal information when using our property tax appeal services."
+        canonicalPath="/privacy-policy"
+        schema={privacyPolicySchema}
+      />
+      
       {/* Navigation */}
       <nav className="px-8 py-8 bg-white border-b border-border/50">
         <div className="max-w-7xl mx-auto flex justify-between items-center">

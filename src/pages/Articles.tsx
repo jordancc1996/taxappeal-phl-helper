@@ -1,9 +1,18 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import PageSEO from "@/components/PageSEO";
+import { articlesPageSchema } from "@/lib/schemas";
 
 const Articles = () => {
   return (
     <div className="min-h-screen bg-background">
+      <PageSEO
+        title="Property Tax Appeal News & Insights | Philly Tax Appeals"
+        description="Expert insights on property tax appeals, assessment processes, and strategies to reduce your tax burden in Philadelphia, Bucks, Delaware, and Montgomery Counties."
+        canonicalPath="/news"
+        schema={articlesPageSchema}
+      />
+      
       {/* Navigation */}
       <Navigation variant="dark" />
       

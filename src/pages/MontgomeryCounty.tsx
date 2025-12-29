@@ -3,16 +3,30 @@ import AppealRequestForm from "@/components/AppealRequestForm";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import RelatedCounties from "@/components/RelatedCounties";
+import PageSEO from "@/components/PageSEO";
+import { createCountyPageSchema } from "@/lib/schemas";
 import montgomeryCountyImage from "@/assets/montgomery-county.jpg";
 
 const MontgomeryCounty = () => {
+  const schema = createCountyPageSchema(
+    "Montgomery County",
+    "https://www.phillytaxappeals.com/montgomery-county-property-tax-appeal"
+  );
+
   return (
     <div className="min-h-screen bg-background">
+      <PageSEO
+        title="Montgomery County Property Tax Appeals | Expert Tax Reduction Services"
+        description="Professional Montgomery County property tax appeal services. Reduce your property tax burden with our local expertise and no upfront costs. Free assessment evaluation."
+        canonicalPath="/montgomery-county-property-tax-appeal"
+        schema={schema}
+      />
+      
       <Navigation variant="dark" />
 
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-8 pt-24 md:pt-28">
-        <nav className="text-sm font-body text-foreground/60">
+        <nav className="text-sm font-body text-foreground/60" aria-label="Breadcrumb">
           <Link to="/" className="hover:text-foreground transition-colors">
             Philly Tax Appeals
           </Link>
