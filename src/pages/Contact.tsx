@@ -2,16 +2,25 @@ import { Link } from "react-router-dom";
 import AppealRequestForm from "@/components/AppealRequestForm";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
+import PageSEO from "@/components/PageSEO";
+import { contactPageSchema } from "@/lib/schemas";
 import contactImage from "@/assets/contact-philly.jpg";
 
 const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
+      <PageSEO
+        title="Contact Us | Philly Tax Appeals - Free Property Tax Evaluation"
+        description="Get a free property tax assessment evaluation. Contact our team of property tax appeal experts serving Philadelphia, Bucks, Delaware, and Montgomery Counties."
+        canonicalPath="/contact"
+        schema={contactPageSchema}
+      />
+      
       <Navigation variant="dark" />
 
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-8 pt-24 md:pt-28">
-        <nav className="text-sm font-body text-foreground/60">
+        <nav className="text-sm font-body text-foreground/60" aria-label="Breadcrumb">
           <Link to="/" className="hover:text-foreground transition-colors">
             Philly Tax Appeals
           </Link>
