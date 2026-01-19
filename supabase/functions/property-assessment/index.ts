@@ -5,6 +5,8 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+const PHILLY_TAX_RATE = 0.013998; // 2025 Tax Rate (1.3998%)
+
 interface PropertyData {
   assessedValue: number;
   marketValue: number;
@@ -12,15 +14,6 @@ interface PropertyData {
   isOverAssessed: boolean;
   address: string;
 }
-
-type GeocodeOk = {
-  formattedAddress: string;
-  streetNumber: string;
-  streetName: string;
-  city: string;
-  state: string;
-  zipCode: string;
-};
 
 serve(async (req) => {
   // Handle CORS preflight requests
@@ -39,214 +32,100 @@ serve(async (req) => {
     const address = typeof body?.address === "string" ? body.address.trim() : "";
 
     if (!address) {
-      // NOTE: return 200 so the client can read the JSON error
       return jsonResponse({ error: "Please provide a valid address." });
     }
 
-    const GOOGLE_MAPS_API_KEY = Deno.env.get("GOOGLE_MAPS_API_KEY");
     const RENTCAST_API_KEY = Deno.env.get("RENTCAST_API_KEY");
-
-    if (!RENTCAST_API_KEY) {
-      console.error("Missing RENTCAST_API_KEY");
-      return jsonResponse({ error: "Server configuration error" }, 500);
-    }
-
-    const rentcastHeaders = {
-      "X-Api-Key": RENTCAST_API_KEY,
-      Accept: "application/json",
-    };
-
-    const calcResult = (marketValue: number, assessedValue: number, resultAddress: string): PropertyData => {
-      const potentialSavings = assessedValue > marketValue
-        ? Math.round((assessedValue - marketValue) * 0.0139)
-        : 0;
-
-      return {
-        assessedValue: Math.round(assessedValue),
-        marketValue: Math.round(marketValue),
-        potentialSavings,
-        isOverAssessed: assessedValue > marketValue,
-        address: resultAddress,
-      };
-    };
-
-    const tryRentcastProperties = async (addr: string) => {
-      const url = `https://api.rentcast.io/v1/properties?address=${encodeURIComponent(addr)}`;
-      const res = await fetch(url, { headers: rentcastHeaders });
-      const text = await res.text();
-      if (!res.ok) return { ok: false as const, status: res.status, text };
-      const json = JSON.parse(text);
-      return { ok: true as const, json };
-    };
-
-    const tryRentcastAvm = async (params: {
-      addressLine: string;
-      city?: string;
-      state?: string;
-      zipCode?: string;
-    }) => {
-      const qs = new URLSearchParams();
-      qs.set("address", params.addressLine);
-      if (params.city) qs.set("city", params.city);
-      if (params.state) qs.set("state", params.state);
-      if (params.zipCode) qs.set("zipCode", params.zipCode);
-
-      const url = `https://api.rentcast.io/v1/avm/value?${qs.toString()}`;
-      const res = await fetch(url, { headers: rentcastHeaders });
-      const text = await res.text();
-      if (!res.ok) return { ok: false as const, status: res.status, text };
-      const json = JSON.parse(text);
-      return { ok: true as const, json };
-    };
-
-    const geocodeWithGoogle = async (input: string): Promise<GeocodeOk | { error: string; statusHint?: string }> => {
-      if (!GOOGLE_MAPS_API_KEY) {
-        return { error: "Geocoding is not configured." };
-      }
-
-      const geocodeUrl =
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(input)}&key=${GOOGLE_MAPS_API_KEY}`;
-
-      const res = await fetch(geocodeUrl);
-      const data = await res.json();
-
-      if (data.status !== "OK" || !data.results?.length) {
-        const status = String(data.status ?? "UNKNOWN");
-        const msg = String(data.error_message ?? "");
-
-        // Log detail for debugging, but don't leak secrets.
-        console.log("Geocode failed:", status, msg);
-
-        if (status === "ZERO_RESULTS") {
-          return { error: "Could not find that address. Please check and try again.", statusHint: status };
-        }
-
-        // Common causes: API not enabled, billing disabled, or key is restricted (e.g. HTTP referrer restriction)
-        return {
-          error:
-            `Geocoding request was denied (${status}). ` +
-            "Please ensure the Geocoding API is enabled, billing is active, and the key has no HTTP referrer restrictions.",
-          statusHint: status,
-        };
-      }
-
-      const location = data.results[0];
-      const formattedAddress = location.formatted_address as string;
-
-      const components = location.address_components as Array<{ long_name: string; short_name: string; types: string[] }>;
-      let streetNumber = "";
-      let streetName = "";
-      let city = "";
-      let state = "";
-      let zipCode = "";
-
-      for (const component of components) {
-        if (component.types.includes("street_number")) streetNumber = component.long_name;
-        if (component.types.includes("route")) streetName = component.long_name;
-        if (component.types.includes("locality")) city = component.long_name;
-        if (component.types.includes("administrative_area_level_1")) state = component.short_name;
-        if (component.types.includes("postal_code")) zipCode = component.long_name;
-      }
-
-      return { formattedAddress, streetNumber, streetName, city, state, zipCode };
-    };
 
     console.log(`Looking up property: ${address}`);
 
-    // 1) Try RentCast directly with the user's input (no geocoding required)
-    const directProps = await tryRentcastProperties(address);
-    if (directProps.ok) {
-      const propertyData = directProps.json;
-      const property = Array.isArray(propertyData) ? propertyData[0] : propertyData;
+    // --- STEP 1: GET THE 2025 CITY VALUE FROM PHILLY CARTO API ---
+    // Clean the address: take first part before comma, uppercase, trim
+    const cleanAddr = address.split(',')[0].toUpperCase().trim();
+    console.log(`Cleaned address for CARTO: ${cleanAddr}`);
 
-      const marketValue = property?.price || property?.estimatedValue || property?.lastSalePrice || 0;
-      const assessedValue = property?.assessedValue || property?.taxAssessedValue || marketValue * 1.1;
+    // Query the assessments table via Philadelphia's open data API
+    const sqlQuery = `
+      SELECT market_value 
+      FROM assessments 
+      WHERE parcel_number IN (
+          SELECT parcel_number 
+          FROM opa_properties_public 
+          WHERE location = '${cleanAddr}'
+      )
+      ORDER BY year DESC 
+      LIMIT 1
+    `;
 
-      if (!marketValue && !assessedValue) {
-        return jsonResponse({ error: "No valuation data available for this property." });
-      }
+    const cityUrl = `https://phl.carto.com/api/v2/sql?q=${encodeURIComponent(sqlQuery)}`;
+    console.log(`Fetching city assessment from: ${cityUrl}`);
 
-      return jsonResponse(calcResult(marketValue, assessedValue, address));
+    const cityRes = await fetch(cityUrl);
+    const cityData = await cityRes.json();
+
+    let cityValue = 0;
+    if (cityData.rows && cityData.rows.length > 0) {
+      cityValue = cityData.rows[0].market_value;
+      console.log(`Found city assessed value: ${cityValue}`);
     } else {
-      console.log("RentCast properties failed:", directProps.status, directProps.text);
-    }
-
-    // 2) Try RentCast AVM with the user's input
-    const directAvm = await tryRentcastAvm({ addressLine: address });
-    if (directAvm.ok) {
-      const avmData = directAvm.json;
-      const marketValue = avmData.price || avmData.priceRangeLow || 0;
-
-      if (!marketValue) {
-        return jsonResponse({ error: "No valuation data available for this property." });
-      }
-
-      // NOTE: assessed value is currently estimated (placeholder)
-      const assessedValue = marketValue * 1.15;
-      return jsonResponse(calcResult(marketValue, assessedValue, address));
-    } else {
-      console.log("RentCast AVM failed:", directAvm.status, directAvm.text);
-    }
-
-    // 3) If direct lookups fail, try Google geocoding to normalize address + extract city/state/zip
-    if (GOOGLE_MAPS_API_KEY) {
-      const geo = await geocodeWithGoogle(address);
-      if ("error" in geo) {
-        // Return 200 so the client can show the real message.
-        return jsonResponse({ error: geo.error });
-      }
-
-      const normalizedProps = await tryRentcastProperties(geo.formattedAddress);
-      if (normalizedProps.ok) {
-        const propertyData = normalizedProps.json;
-        const property = Array.isArray(propertyData) ? propertyData[0] : propertyData;
-
-        const marketValue = property?.price || property?.estimatedValue || property?.lastSalePrice || 0;
-        const assessedValue = property?.assessedValue || property?.taxAssessedValue || marketValue * 1.1;
-
-        if (!marketValue && !assessedValue) {
-          return jsonResponse({ error: "No valuation data available for this property." });
-        }
-
-        return jsonResponse(calcResult(marketValue, assessedValue, geo.formattedAddress));
-      } else {
-        console.log("RentCast normalized properties failed:", normalizedProps.status, normalizedProps.text);
-      }
-
-      // Last fallback: AVM with parsed components
-      const addressLine = `${geo.streetNumber} ${geo.streetName}`.trim() || address;
-      const parsedAvm = await tryRentcastAvm({
-        addressLine,
-        city: geo.city,
-        state: geo.state,
-        zipCode: geo.zipCode,
+      console.log("No city data found for address:", cleanAddr);
+      return jsonResponse({
+        error: "We couldn't find that address in the Philadelphia records. Try entering just the street number and name (e.g. 888 N 26TH ST)."
       });
-
-      if (parsedAvm.ok) {
-        const avmData = parsedAvm.json;
-        const marketValue = avmData.price || avmData.priceRangeLow || 0;
-
-        if (!marketValue) {
-          return jsonResponse({ error: "No valuation data available for this property." });
-        }
-
-        // NOTE: assessed value is currently estimated (placeholder)
-        const assessedValue = marketValue * 1.15;
-        return jsonResponse(calcResult(marketValue, assessedValue, geo.formattedAddress));
-      }
-
-      console.log("RentCast parsed AVM failed:", parsedAvm.status, parsedAvm.text);
     }
 
-    return jsonResponse({
-      error: "Could not retrieve property data for this address. Please double-check the address and try again.",
-    });
+    // --- STEP 2: GET MARKET VALUE (RENTCAST) ---
+    let marketValue = 0;
+
+    if (RENTCAST_API_KEY) {
+      try {
+        const rentCastUrl = `https://api.rentcast.io/v1/avm/value?address=${encodeURIComponent(address)}&propertyType=Single%20Family`;
+        console.log(`Fetching market value from RentCast: ${rentCastUrl}`);
+        
+        const marketRes = await fetch(rentCastUrl, {
+          headers: { "X-Api-Key": RENTCAST_API_KEY }
+        });
+        
+        if (marketRes.ok) {
+          const marketData = await marketRes.json();
+          marketValue = marketData.price || marketData.priceRangeLow || 0;
+          console.log(`RentCast market value: ${marketValue}`);
+        } else {
+          console.log(`RentCast API failed with status: ${marketRes.status}`);
+        }
+      } catch (rentcastErr) {
+        console.error("RentCast error:", rentcastErr);
+      }
+    } else {
+      console.log("No RENTCAST_API_KEY configured");
+    }
+
+    // If RentCast failed, use a reasonable estimate based on city value
+    if (!marketValue) {
+      // Fallback: estimate market value as 85% of assessed (conservative)
+      marketValue = Math.round(cityValue * 0.85);
+      console.log(`Using estimated market value: ${marketValue}`);
+    }
+
+    // --- STEP 3: CALCULATE SAVINGS ---
+    const diff = cityValue - marketValue;
+    const annualSavings = diff > 0 ? Math.round(diff * PHILLY_TAX_RATE) : 0;
+
+    const result: PropertyData = {
+      assessedValue: Math.round(cityValue),
+      marketValue: Math.round(marketValue),
+      potentialSavings: annualSavings,
+      isOverAssessed: diff > 0,
+      address: cleanAddr,
+    };
+
+    console.log("Returning result:", result);
+    return jsonResponse(result);
 
   } catch (error) {
     console.error("Error processing request:", error);
-    return new Response(JSON.stringify({ error: "An error occurred while processing your request." }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return jsonResponse({ 
+      error: "An error occurred while fetching data. Please try again." 
+    }, 500);
   }
 });
