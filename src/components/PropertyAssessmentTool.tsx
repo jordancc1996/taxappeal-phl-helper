@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
 
 interface AssessmentResult {
   assessedValue: number;
   marketValue: number;
   potentialSavings: number;
   isOverAssessed: boolean;
+  address: string;
 }
 
 const PropertyAssessmentTool = () => {
@@ -36,22 +38,29 @@ const PropertyAssessmentTool = () => {
     setError(null);
     setResult(null);
 
-    // TODO: Replace with actual API call
-    // Simulating API call for now
-    setTimeout(() => {
-      // Mock data - replace with actual API response
-      const mockAssessed = 350000;
-      const mockMarket = 295000;
-      const savings = mockAssessed > mockMarket ? Math.round((mockAssessed - mockMarket) * 0.0139) : 0;
-      
-      setResult({
-        assessedValue: mockAssessed,
-        marketValue: mockMarket,
-        potentialSavings: savings,
-        isOverAssessed: mockAssessed > mockMarket,
+    try {
+      const { data, error: fnError } = await supabase.functions.invoke('property-assessment', {
+        body: { address: address.trim() }
       });
+
+      if (fnError) {
+        console.error('Function error:', fnError);
+        setError('Unable to retrieve property data. Please try again.');
+        return;
+      }
+
+      if (data.error) {
+        setError(data.error);
+        return;
+      }
+
+      setResult(data);
+    } catch (err) {
+      console.error('Error:', err);
+      setError('An unexpected error occurred. Please try again.');
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -97,6 +106,11 @@ const PropertyAssessmentTool = () => {
       {/* Results Section */}
       {result && !isLoading && (
         <div className="bg-muted/30 p-8 md:p-10 mt-8 border-t-2 border-foreground">
+          {/* Address Display */}
+          <p className="text-center text-foreground/70 font-body text-sm mb-6">
+            {result.address}
+          </p>
+
           {/* Value Cards */}
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             {/* Assessed Value Card */}
