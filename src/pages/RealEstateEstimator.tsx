@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PageSEO from "@/components/PageSEO";
+import PropertyAssessmentTool from "@/components/PropertyAssessmentTool";
 
 const realEstateEstimatorSchema = {
   "@context": "https://schema.org",
@@ -50,12 +51,8 @@ const RealEstateEstimator = () => {
           Enter your property address to compare your assessed value against market value and calculate your potential property tax savings.
         </p>
 
-        {/* Tool Container - Ready for your code */}
-        <div className="bg-muted/30 border border-border rounded-lg p-8 md:p-12">
-          <p className="text-foreground/60 font-body text-center">
-            Tool will be added here
-          </p>
-        </div>
+        {/* Assessment Tool */}
+        <PropertyAssessmentTool />
 
         {/* Info Section */}
         <div className="grid md:grid-cols-2 gap-x-24 gap-y-12 mt-16">
