@@ -1,1 +1,4 @@
 project_id = "whrkkxlymcewucxonhbc"
+
+[functions.property-assessment]
+verify_jwt = false
