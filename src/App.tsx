@@ -14,6 +14,7 @@ import MontgomeryCounty from "./pages/MontgomeryCounty";
 import Philadelphia from "./pages/Philadelphia";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Tools from "./pages/Tools";
+import RealEstateEstimator from "./pages/RealEstateEstimator";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/news" element={<Articles />} />
             <Route path="/tools" element={<Tools />} />
+            <Route path="/tools/real-estate-estimator" element={<RealEstateEstimator />} />
             <Route path="/bucks-county-property-tax-appeal" element={<BucksCounty />} />
             <Route path="/delaware-county-property-tax-appeal" element={<DelawareCounty />} />
             <Route path="/montgomery-county-property-tax-appeal" element={<MontgomeryCounty />} />

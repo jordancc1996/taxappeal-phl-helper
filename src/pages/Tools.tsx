@@ -68,10 +68,14 @@ const Tools = () => {
 
           <div>
             <h2 className="text-2xl md:text-3xl font-display font-normal text-foreground mb-6">
-              Coming Soon
+              Real Estate Estimator
             </h2>
             <p className="text-foreground font-body text-base md:text-lg leading-relaxed">
-              We're developing powerful tools to help you analyze your property tax assessment, compare values in your neighborhood, and estimate potential savings from a successful appeal.
+              Use our{" "}
+              <Link to="/tools/real-estate-estimator" className="underline underline-offset-4 hover:opacity-70 transition-opacity">
+                Real Estate Estimator
+              </Link>{" "}
+              to compare your assessed value against market value and calculate your potential property tax savings.
             </p>
           </div>
 
