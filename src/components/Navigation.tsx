@@ -59,6 +59,12 @@ const Navigation = ({ variant = "light" }: NavigationProps) => {
           Philadelphia
         </Link>
         <Link 
+          to="/tools" 
+          className={`${textColor} hover:opacity-70 transition-all duration-300`}
+        >
+          Tools
+        </Link>
+        <Link 
           to="/news" 
           className={`${textColor} hover:opacity-70 transition-all duration-300`}
         >
