@@ -13,7 +13,7 @@ const PageSEO = ({
   description,
   canonicalPath,
   schema,
-  ogImage = "https://www.phillytaxappeals.com/favicon.png",
+  ogImage = "https://www.phillytaxappeals.com/og-image.jpg",
 }: PageSEOProps) => {
   const baseUrl = "https://www.phillytaxappeals.com";
   const canonicalUrl = `${baseUrl}${canonicalPath}`;
