@@ -10,7 +10,16 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 User-agent: *
 Allow: /
 
-Sitemap: https://www.phillytaxappeals.com/sitemap.xml
+Sitemap: https://phillytaxappeals.com/sitemap.xml
